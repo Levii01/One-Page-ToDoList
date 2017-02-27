@@ -1,12 +1,16 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:edit, :update, :destroy]
-  before_action :authenticate_user!
+  # before_action :authenticate_user!
 
   respond_to :html
   respond_to :js
 
   def index
-    @user = current_user
+    if current_user
+      @user = current_user
+    else
+      @user = User.first
+    end
     @tasks = @user.tasks.all
     respond_with(@tasks)
   end
@@ -26,21 +30,40 @@ class TasksController < ApplicationController
   end
 
   def new
+    if current_user
+      @user = current_user
+    else
+      @user = User.first
+    end
     @task = Task.new
     respond_with(@task)
   end
 
   def edit
+    if current_user
+      @user = current_user
+    else
+      @user = User.first
+    end
   end
 
   def create
-    @user = current_user
+    if current_user
+      @user = current_user
+    else
+      @user = User.first
+    end
     @task = Task.new(task_params)
     @task.save
     respond_with(@task)
   end
 
   def update
+    if current_user
+      @user = current_user
+    else
+      @user = User.first
+    end
     @task.update(task_params)
     respond_with(@task)
   end
