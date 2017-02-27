@@ -12,9 +12,18 @@ class TasksController < ApplicationController
 
   def complete
     @task = Task.find(params[:id])
-    @task.mark_complete!
+    if @task.complete
+      redirect_to action: 'incomplete'
+    else
+      @task.mark_complete!
+    end
   end
-  
+
+  def incomplete
+    @task = Task.find(params[:id])
+    @task.mark_incomplete!
+  end
+
   def new
     @task = Task.new
     respond_with(@task)

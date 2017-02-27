@@ -1,11 +1,13 @@
+<h3>Completed Tasks</h3>
 <div class="complete-tasks">
     <% @tasks.complete.each do |task| %>
-    <h3><%= task.name %></h3>
+      <%= render task %>
     <% end %>
 </div>
 
+<h3>Incomplete Tasks</h3>
 <div class="my-tasks">
-  <% @tasks.each do |task| %>
+  <% @tasks.incomplete.each do |task| %>
     <%= render task %>
   <% end %>
 </div>
