@@ -1,5 +1,6 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:edit, :update, :destroy]
+  before_action :authenticate_user!
 
   respond_to :html
   respond_to :js
@@ -8,6 +9,20 @@ class TasksController < ApplicationController
     @user = current_user
     @tasks = @user.tasks.all
     respond_with(@tasks)
+  end
+
+  def complete
+    @task = Task.find(params[:id])
+    if @task.complete
+      redirect_to action: 'incomplete'
+    else
+      @task.mark_complete!
+    end
+  end
+
+  def incomplete
+    @task = Task.find(params[:id])
+    @task.mark_incomplete!
   end
 
   def new
