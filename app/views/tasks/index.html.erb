@@ -6,6 +6,7 @@
     <span class="center">Your own <br> ToDo list</span>
   </div>
 </div>
+</ul>
 <div class="clear"></div>
 <h3 class="title">Completed Tasks</h3>
 <div class="completed-tasks row">
@@ -20,5 +21,15 @@
     <%= render task %>
   <% end %>
 </div>
-
+<div class="fotter-button">
 <%= link_to 'New Task', new_task_path, remote: true, class: 'new-task-button' %>
+<div class="devise-button">
+<% if user_signed_in? %>
+  <%= link_to 'Edit', edit_user_registration_path, class: 'button right' %>
+  <%= link_to 'Log out', destroy_user_session_path, method: :delete, class: 'button right' %>
+<% else %>
+  <%= link_to 'Log in', new_user_session_path, class: 'button'  %>
+  <%= link_to 'Sign up', new_user_registration_path, class: 'button'  %>
+<% end %>
+</div>
+</div>
