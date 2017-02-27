@@ -1,2 +1,3 @@
 $('form').hide();
 $('div#<%= dom_id(@task) %>').replaceWith('<%= j render partial: "task", locals: {task: @task} %>');
+$('.new-button-place').append('<%= link_to 'New Task', new_task_path, remote: true, class: 'new-task-button' %>');
