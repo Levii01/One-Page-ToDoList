@@ -10,6 +10,11 @@ class TasksController < ApplicationController
     respond_with(@tasks)
   end
 
+  def complete
+    @task = Task.find(params[:id])
+    @task.mark_complete!
+  end
+  
   def new
     @task = Task.new
     respond_with(@task)
