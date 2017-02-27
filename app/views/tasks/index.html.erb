@@ -1,15 +1,35 @@
-<h3>Completed Tasks</h3>
-<div class="complete-tasks">
+<div class="logo row">
+  <div class="image logo-content">
+  <%= image_tag "todo.png" %>
+  </div>
+  <div class="logo-title logo-content">
+    <span class="center">Your own <br> ToDo list</span>
+  </div>
+</div>
+</ul>
+<div class="clear"></div>
+<h3 class="title">Completed Tasks</h3>
+<div class="completed-tasks row">
     <% @tasks.complete.each do |task| %>
       <%= render task %>
     <% end %>
 </div>
 
-<h3>Incomplete Tasks</h3>
-<div class="my-tasks">
+<h3 class="title">Incompleted Tasks</h3>
+<div class="my-tasks row">
   <% @tasks.incomplete.each do |task| %>
     <%= render task %>
   <% end %>
 </div>
-
+<div class="fotter-button">
 <%= link_to 'New Task', new_task_path, remote: true, class: 'new-task-button' %>
+<div class="devise-button">
+<% if user_signed_in? %>
+  <%= link_to 'Edit', edit_user_registration_path, class: 'button right' %>
+  <%= link_to 'Log out', destroy_user_session_path, method: :delete, class: 'button right' %>
+<% else %>
+  <%= link_to 'Log in', new_user_session_path, class: 'button'  %>
+  <%= link_to 'Sign up', new_user_registration_path, class: 'button'  %>
+<% end %>
+</div>
+</div>

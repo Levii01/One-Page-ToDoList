@@ -12,7 +12,7 @@
   <% end %>
 
   <div class="field">
-    <%= f.text_field :name, label: false, placeholder: "Task Name" %>
+    <%= f.text_field :name, label: false, placeholder: "Task Name", autocomplete: "off", class: 'form-control' %>
   </div>
 
   </div>
@@ -20,6 +20,6 @@
     <%= f.hidden_field :user_id, value: current_user.id %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: 'button' %>
   </div>
 <% end %>
