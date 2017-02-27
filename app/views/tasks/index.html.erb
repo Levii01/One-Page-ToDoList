@@ -1,3 +1,9 @@
+<div class="complete-tasks">
+    <% @tasks.complete.each do |task| %>
+    <h3><%= task.name %></h3>
+    <% end %>
+</div>
+
 <div class="my-tasks">
   <% @tasks.each do |task| %>
     <%= render task %>
