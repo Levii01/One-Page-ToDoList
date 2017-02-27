@@ -1,3 +1,12 @@
+<div class="logo row">
+  <div class="image logo-content">
+  <%= image_tag "todo.png" %>
+  </div>
+  <div class="logo-title logo-content">
+    <span class="center">Your own <br> ToDo list</span>
+  </div>
+</div>
+<div class="clear"></div>
 <h3 class="title">Completed Tasks</h3>
 <div class="completed-tasks row">
     <% @tasks.complete.each do |task| %>
